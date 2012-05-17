@@ -24,18 +24,17 @@
       return null;
     }
   
-    public function &execute(ScopeContext &$Scope, PageContext &$Page) {
+    public function &execute(ScopeContext &$Scope, PageContext &$Page, RenderContext &$Render) {
       $App =& $this->getApplicationContext();
-      $Render =& $App->getRenderContext();
-  
+
       $params = Array(
         "hello" => $this->getParam($Page, "hello", "")
       );
-  
+
       $out =& $Render->getRenderOutput();
       $out->setCacheable(true);
       $out->getHDF()->set("hello", $params["hello"]);
-  
+
       return $out;
     }
   }
