@@ -1,6 +1,5 @@
 <?
-  class ExampleContext extends BackendContext {
-  
+  class ExampleQuery extends BackendQuery {
     public function getInternalName() {
       return "example";
     }
@@ -23,19 +22,21 @@
       }
       return null;
     }
-  
-    public function &execute(ScopeContext &$Scope, PageContext &$Page, RenderContext &$Render) {
+
+    public function isCacheable() {
+      return true;
+    }
+
+    public function execute(BackendContext $Backend, ScopeContext &$Scope, BackendOutputFactory $OutputFactory) {
       $App =& $this->getApplicationContext();
 
       $params = Array(
         "hello" => $this->getParam($Page, "hello", "")
       );
 
-      $out =& $Render->getRenderOutput();
-      $out->setCacheable(true);
-      $out->getHDF()->set("hello", $params["hello"]);
-
-      return $out;
+      $Output =& $OutputFactory->create();
+      $Output->set("hello", $params["hello"]);
+      return $Output;
     }
   }
 ?>
