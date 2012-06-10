@@ -5,7 +5,7 @@
     }
   
     public function getDisplayName() {
-      return "My Example Context";
+      return "My Example";
     }
   
     public function isDependentOnScope($scopeKey) {
