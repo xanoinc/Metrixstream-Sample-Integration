@@ -1,7 +1,7 @@
 <?
-  class AuthUser_updateLastLoginTimestampQuery extends ApiQuery {
+  class ApiQuery_UpdateLastLoginTimestamp extends ApiQuery {
     public function getInternalName() {
-      return "authuser_updatelastlogintimestamp";
+      return "updatelastlogintimestamp";
     }
 
     public function execute(ApiContext &$Api, ApiOutputFactory &$OutputFactory) {
