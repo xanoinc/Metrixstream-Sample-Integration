@@ -9,15 +9,10 @@ class BackendQuery_Example extends BackendQuery {
     return false;
   }
 
-  public function getConsumableParams() {
-    return Array("hello");
-  }
-
-  public function filterParam($paramName, $paramValue, $whitelist = Array()) {
-    switch($paramName) {
-      case "hello": return $paramValue;
-    }
-    return null;
+  public function getParamFilters() {
+    return Array(
+      "hello" => TextInputFilter::create()->min(0)->max(48),
+    );
   }
 
   public function isCacheable() {
